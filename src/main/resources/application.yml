@@ -1,0 +1,12 @@
+jms:
+  mssql:
+    url: source://jms.domain
+    port: 1433
+    user: jms_user1
+    password: jms_password1
+
+mssql:
+  url: source://domain
+  port: 1433
+  user: user1
+  password: password1

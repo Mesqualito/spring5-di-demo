@@ -1,0 +1,36 @@
+# this is a comment
+
+# property: value
+name: Jochen
+
+names: # an array
+  - Jochen
+  - Marina
+  - Maruks
+  - Jessica
+
+pound_sign: "#"
+
+book:
+  author: Jochen
+  publisher: Karl Hart
+
+# booleans:
+truth: yes
+another_true: true
+more_true: True
+false: no # No, False, false
+
+string_value: "This is it's quote"
+
+colon_string: "I am a counter: one, two, three"
+
+include_new_lines: |
+  the first line
+  the second line
+  the third line
+
+ignore_new_lines: >
+  this is
+  just one long
+  string
