@@ -1,5 +1,6 @@
 package com.eigenbaumarkt;
 
+import com.eigenbaumarkt.source.FakeJmsBroker;
 import com.eigenbaumarkt.source.SuckSource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,6 +18,9 @@ public class DiDemoApplication {
         SuckSource suckSource = (SuckSource) ctx.getBean(SuckSource.class);
         System.out.println(suckSource.getUser() + "@" + suckSource.getDatasource() + ":" + suckSource.getPort());
         System.out.println("Das geheime Passwort: " + suckSource.getPassword());
+
+        FakeJmsBroker fakeJmsBroker = (FakeJmsBroker) ctx.getBean(FakeJmsBroker.class);
+        System.out.println("Go to the fake: " + fakeJmsBroker.getDatasource()+":"+fakeJmsBroker.getPort());
 
     }
 
