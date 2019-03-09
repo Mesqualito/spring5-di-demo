@@ -2,26 +2,14 @@ package com.eigenbaumarkt.configuration;
 
 import com.eigenbaumarkt.source.FakeJmsBroker;
 import com.eigenbaumarkt.source.SuckSource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.annotation.PropertySources;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import org.springframework.core.env.Environment;
 
 @Configuration
-@PropertySources({
-        @PropertySource("classpath:datasource.properties"),
-        @PropertySource("classpath:jms.properties")
-})
 public class SourcePropertyConfig {
 
-    @Autowired
-    Environment env;
-
-    // Parameter @Value: Spring Expression Language (SpEL)
     @Value("${mssql.url}")
     String url;
 
@@ -46,8 +34,6 @@ public class SourcePropertyConfig {
     @Value("${jms.mssql.password}")
     String jmsPassword;
 
-
-    // get values from externalized properties into spring framework
     @Bean
     public SuckSource suckSource(){
         SuckSource suckSource = new SuckSource();
@@ -55,7 +41,7 @@ public class SourcePropertyConfig {
             suckSource.setDatasource(url);
             suckSource.setPort(port);
             suckSource.setUser(user);
-            suckSource.setPassword( env.getProperty("PASSWORD") != null ? env.getProperty("PASSWORD") : password );
+            suckSource.setPassword(password);
 
             return suckSource;
     }
