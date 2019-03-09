@@ -16,6 +16,7 @@ public class DiDemoApplication {
 
         SuckSource suckSource = (SuckSource) ctx.getBean(SuckSource.class);
         System.out.println(suckSource.getUser() + "@" + suckSource.getDatasource() + ":" + suckSource.getPort());
+        System.out.println("Das geheime Passwort: " + suckSource.getPassword());
 
     }
 

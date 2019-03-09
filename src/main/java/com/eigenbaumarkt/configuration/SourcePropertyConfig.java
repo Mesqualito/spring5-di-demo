@@ -1,15 +1,20 @@
 package com.eigenbaumarkt.configuration;
 
 import com.eigenbaumarkt.source.SuckSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.env.Environment;
 
 @Configuration
 @PropertySource("classpath:datasource.properties")
 public class SourcePropertyConfig {
+
+    @Autowired
+    Environment env;
 
     // Parameter @Value: Spring Expression Language (SpEL)
     @Value("${mssql.url}")
@@ -32,7 +37,7 @@ public class SourcePropertyConfig {
             suckSource.setDatasource(url);
             suckSource.setPort(port);
             suckSource.setUser(user);
-            suckSource.setPassword(password);
+            suckSource.setPassword( env.getProperty("PASSWORD") != null ? env.getProperty("PASSWORD") : password );
 
             return suckSource;
     }
