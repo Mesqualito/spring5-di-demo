@@ -10,3 +10,13 @@ mssql:
   port: 1433
   user: user1
   password: password1
+
+# 'new file'-separator: ---
+---
+
+# will override with given 'de'-profile:
+spring:
+  profiles: de
+
+mssql:
+  url: alternative-de-source://domain
